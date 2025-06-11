@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, createContext, useContext, ReactNode } from "react";
-import NavigationBar from "./components/NavigationBar";
 import Index from "./pages/Index";
 import Profile from "./pages/Profile";
 import Discover from "./pages/Discover";
@@ -150,9 +149,30 @@ const Login = () => {
 
 // Layout Component with Navigation
 const Layout = ({ children }: { children: ReactNode }) => {
+  const { logout, user } = useAuth();
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <NavigationBar />
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 h-16">
+        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">TC</span>
+            </div>
+            <span className="font-semibold text-gray-800">Two Crystals</span>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-gray-600">Привет, {user?.name}</span>
+            <button
+              onClick={logout}
+              className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              Выйти
+            </button>
+          </div>
+        </div>
+      </nav>
       <main className="pt-16 pb-20 md:pb-0">{children}</main>
     </div>
   );
