@@ -1,7 +1,20 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import AuthDialog from "./AuthDialog";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const [showAuth, setShowAuth] = useState(false);
+  const navigate = useNavigate();
+
+  const handleAuthSuccess = (userData: any) => {
+    if (userData.isNewUser) {
+      navigate("/profile");
+    } else {
+      navigate("/discover");
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-romance-pink via-romance-purple to-purple-900">
       {/* Background animation */}
@@ -47,6 +60,7 @@ const Hero = () => {
             <Button
               size="lg"
               className="text-lg px-8 py-4 bg-white text-romance-purple hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              onClick={() => setShowAuth(true)}
             >
               <Icon name="Heart" size={20} className="mr-2" />
               Начать знакомства
@@ -55,9 +69,10 @@ const Hero = () => {
               size="lg"
               variant="outline"
               className="text-lg px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-romance-purple transition-all duration-300 transform hover:scale-105"
+              onClick={() => setShowAuth(true)}
             >
-              <Icon name="Play" size={20} className="mr-2" />
-              Смотреть как работает
+              <Icon name="Sparkles" size={20} className="mr-2" />
+              Войти в аккаунт
             </Button>
           </div>
 
@@ -102,6 +117,12 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <Icon name="ChevronDown" size={32} className="text-white/70" />
       </div>
+
+      <AuthDialog
+        isOpen={showAuth}
+        onClose={() => setShowAuth(false)}
+        onSuccess={handleAuthSuccess}
+      />
     </section>
   );
 };
