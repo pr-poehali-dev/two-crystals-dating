@@ -89,6 +89,7 @@ const Matches = () => {
               <Card
                 key={index}
                 className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => navigate(`/chat/${profile.name}`)}
               >
                 <CardContent className="p-4">
                   <div className="flex items-center gap-4">

@@ -130,6 +130,18 @@ const Features = () => {
             </div>
           </div>
         </div>
+
+        {/* Stories Button */}
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            className="bg-romance-purple hover:bg-romance-purple/90"
+            onClick={() => (window.location.href = "/stories")}
+          >
+            <Icon name="Image" size={20} className="mr-2" />
+            Смотреть Stories
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -48,42 +48,89 @@
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 293 84% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 268 46% 65%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 24 95% 53%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 293 84% 60%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-['Open_Sans'];
+    @apply bg-background text-foreground font-open-sans;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-['Montserrat'];
+  .font-montserrat {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .font-open-sans {
+    font-family: "Open Sans", sans-serif;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Custom animations */
+  @keyframes love-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-love-bounce {
+    animation: love-bounce 2s ease-in-out infinite;
+  }
+
+  /* Romance colors */
+  .text-romance-pink {
+    color: #fce7f3;
+  }
+  .text-romance-purple {
+    color: #d946ef;
+  }
+  .text-romance-orange {
+    color: #f97316;
+  }
+  .text-love-red {
+    color: #ef4444;
+  }
+
+  .bg-romance-pink {
+    background-color: #fce7f3;
+  }
+  .bg-romance-purple {
+    background-color: #d946ef;
+  }
+  .bg-romance-orange {
+    background-color: #f97316;
+  }
+  .bg-love-red {
+    background-color: #ef4444;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(217, 70, 239, 0.5);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(217, 70, 239, 0.8);
   }
 }
 
